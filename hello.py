@@ -212,6 +212,8 @@ print(sys1.argv[0])
 # 1 guess game
 
 
+
+"""
 import random
 
 reward = {
@@ -232,7 +234,7 @@ for i in count:
     else:
         print('Oops ! you fail')
         continue
-
+"""
 
 # 2 calculating area of circle and volume of cone and sylinder
 
@@ -242,15 +244,15 @@ volume of cylinder = π · r2 · h
 volume of cone = (1/3) · π · r2 · h
 """
 
+
+"""
+
 import math
 
-#radius = int(input('inter radius:'))
-#height = int(input('inter height:'))
 
 
 def circle_area(radius):
     print('circle area is:{}'.format(math.pi * (radius ** 2)))
-
 
 def cylinder_volume(radius, height):
     print('cylinder volume is:{}'.format(math.pi * (radius ** 2) * height))
@@ -258,6 +260,29 @@ def cylinder_volume(radius, height):
 
 def cone_volume(radius, height):
     print('cone volume is:{}'.format((1 / 3) * math.pi * (radius ** 2) * height))
+
+
+print('1. circle \n 2. cylinder volume \n 3.cone volume')
+choice = int(float(input('inter your choice:')))
+if choice == 1:
+    radius = int(input('inter radius:'))
+    circle_area(radius)
+else:
+    radius = int(input('inter radius:'))
+    height = int(input('inter height:'))
+
+    if choice == 2:
+        cylinder_volume(radius, height)
+    else:
+        cone_volume(radius, height)
+"""
+
+
+
+
+
+
+
 
 """
 circle_area(radius)
@@ -286,12 +311,71 @@ distr_dic = {
             },
 }
 
-dist_name = input('enter district name:')
+#dist_name = input('enter district name:')
 
 def find_details(dist_name):
     print(distr_dic[dist_name])
 
-find_details(dist_name)
+#find_details(dist_name)
 
 #4 compare time of execution between factorial of 899 and recursion
 
+
+#exception handling
+
+try:
+    print(8/1)
+except:
+    print('exce[t')
+else:
+    print('else')
+finally:
+    print('finary')
+
+# file handling
+"""
+words = open('test.txt','a')
+words.write('shema eric is nice \n')
+words = open('test.txt','r')
+print(words.read())
+"""
+# oop
+
+class Human:
+    def __init__(self,kk='shema eric'):
+      self.name = kk
+    def display(self):
+        print(self.name)
+
+class Child2(Human):
+    def __init__(self):
+        Human.__init__(self)
+    def display1(self):
+        print(self.name)
+
+c2 = Child2()
+c2.display()
+
+# MULTITHREADING
+
+import threading
+
+def task1(num):
+    print(num**2)
+    print(threading.current_thread().name)
+def task2(num):
+    print(num**3)
+
+
+t1 = threading.Thread(target=task1, args=(10,),name='shema')
+t2 = threading.Thread(target=task2, args=(10,))
+
+# starting thread 1
+t1.start()
+# starting thread 2
+t2.start()
+
+# wait until thread 1 is completely executed
+t1.join()
+# wait until thread 2 is completely executed
+t2.join()
